@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Калькулятор дохода</title>
+<link rel="stylesheet" type="text/css" href="css/style.css"  />
+</head>
+<body ng-app="app">
+<div align="center" ng-controller="Main">
+    <div id="wrap">
+        <div id="logo"></div>
+        <div id="logo2"> Калькулятор дохода</div>
+        <div id="rad1" ng-init="valut = 'RUB'">
+            <h3>Валюта вклада</h3>
+            <input type="radio" class="vlt" value="RUB" ng-model="valut"> Рубли<Br>
+            <input type="radio" class="vlt" value="USD" ng-model="valut"> Долары<Br>
+            <input type="radio" class="vlt" value="EUR" ng-model="valut"> Евро<Br>
+        </div>
+        <div id="rad2" ng-init="trpl = 'tp1'">
+            <h3>Тарифные планы</h3>
+            <input type="radio" class="vlt" value="tp1" ng-model="trpl"> 6 месяцев<Br>
+            <input type="radio" class="vlt" value="tp2" ng-model="trpl"> 12 месяцев<Br>
+            <div id="rad2r" ng-init="trplr = 'tpr1'">
+                <input type="radio" class="vlt" value="tpr1" ng-disabled="valut !== 'RUB' || trpl !== 'tp2'" ng-model="trplr"> Развитие 1<Br>
+                <input type="radio" class="vlt" value="tpr2" ng-disabled="valut !== 'RUB' || trpl !== 'tp2'" ng-model="trplr"> Развитие 2<Br>
+                <input type="radio" class="vlt" value="tpr3" ng-disabled="valut !== 'RUB' || trpl !== 'tp2'" ng-model="trplr"> Развитие 3<Br>
+            </div>
+        </div>
+        <div id="rad3">
+            <h3>Введите сумму</h3>
+            <input type="text" id="suma" name="sum" ng-model="vzns">
+            <span id='minsm' ng-if="needMin"><strong> минимальная сумма от 35000RUB или 1000 USD/EURO!</strong></span><Br>
+            <span id='minsm2' ng-if="!needMin">*если сумма вклада больше 5000000 р , 150000 USD, 100000 EURO то особые условия.</span>
+        </div>
+        <div id="rzc" ng-click="calc()"></div>
+        <div id="rad5" ng-if="lines.length">
+            <p><b>График выплат:</b></p>
+            <span ng-repeat="item in lines track by $index">
+                {{ item.date | date : 'dd/MM/yyyy' }} - {{ item.sum }} <br><hr>
+            </span>
+            <p id='itog'>
+                Итого, доход по выбранному ТП составляет : <br>{{ itogd }}, что составляет {{ itogp }}% за {{ mes }} месяцев
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</html>
