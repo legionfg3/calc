@@ -62,8 +62,6 @@ angular
             }
         };
 
-        var item = {};
-
         $scope.calc = function() {
             if (!$scope.vzns || +$scope.vzns < sum[$scope.valut].min) {
                 $scope.needMin = true;
@@ -73,6 +71,8 @@ angular
                 var day = date.getDate();
                 var month = date.getMonth();
                 var year = date.getFullYear();
+                var vmes = +sum[$scope.valut].trpl[$scope.trpl].vmes;
+
                 $scope.needMin = false;
                 $scope.itogd = Math.floor($scope.vzns * sum[$scope.valut].trpl[$scope.trpl].itogd[+max]) + ' ' + $scope.valut;
                 $scope.itogp = sum[$scope.valut].trpl[$scope.trpl].itogp[+max];
@@ -80,12 +80,12 @@ angular
                 $scope.lines = [];
 
                 for (var i = 0; i < $scope.mes; i++) {
-                    item = $scope.lines[i];
-                    item.date = new Date(year + (month + i > 11), month + i, day);
-                    item.sum = i? $scope.mes - i > 2? sum[$scope.valut].trpl[$scope.trpl].vmes:
-                        (+$scope.vzns + +$scope.vmes) - ((+$scope.vzns + +$scope.vmes) / 10):
-                        Math.floor($scope.vzns * (max? 0.05 : $scope.vmes));
-                    item.sum += ' ' + $scope.valut;
+                    $scope.lines.push({
+                        date: new Date(year, month + i, day),
+                        sum: Math.floor(i? $scope.mes - i > 1? vmes * $scope.vzns:
+                            (1 + vmes) * $scope.vzns * 0.9 :
+                            (max? 0.05 : vmes) * $scope.vzns) + ' ' + $scope.valut
+                    });
                 }
             }
         }
