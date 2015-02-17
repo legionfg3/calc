@@ -62,20 +62,7 @@ angular
             }
         };
 
-        function getLines(max) {
-            var item = {};
-
-            $scope.lines = [];
-
-            for (var i = 0; i < $scope.mes; i++) {
-                item.date = new Date();
-                item.sum = i? $scope.mes - i > 2? sum[$scope.valut].trpl[$scope.trpl].vmes:
-                    (+$scope.vzns + +$scope.vmes) - ((+$scope.vzns + +$scope.vmes) / 10):
-                    Math.floor($scope.vzns * (max? 0.05 : $scope.vmes));
-                item.sum += ' ' + $scope.valut;
-                $scope.lines.push(item);
-            }
-        }
+        var item = {};
 
         $scope.calc = function() {
             if (!$scope.vzns || +$scope.vzns < sum[$scope.valut].min) {
@@ -86,7 +73,16 @@ angular
                 $scope.itogd = Math.floor($scope.vzns * sum[$scope.valut].trpl[$scope.trpl].itogd[+max]) + ' ' + $scope.valut;
                 $scope.itogp = sum[$scope.valut].trpl[$scope.trpl].itogp[+max];
                 $scope.mes = sum[$scope.valut].trpl[$scope.trpl].mes;
-                getLines(max);
+                $scope.lines = [];
+
+                for (var i = 0; i < $scope.mes; i++) {
+                    item.date = new Date();
+                    item.sum = i? $scope.mes - i > 2? sum[$scope.valut].trpl[$scope.trpl].vmes:
+                    (+$scope.vzns + +$scope.vmes) - ((+$scope.vzns + +$scope.vmes) / 10):
+                        Math.floor($scope.vzns * (max? 0.05 : $scope.vmes));
+                    item.sum += ' ' + $scope.valut;
+                    $scope.lines.push(item);
+                }
             }
         }
     });
