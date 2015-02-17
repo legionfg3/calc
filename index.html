@@ -34,7 +34,7 @@
         <div id="rzc" ng-click="calc()"></div>
         <div id="rad5" ng-if="lines.length">
             <p><b>График выплат:</b></p>
-            <span ng-repeat="item in lines track by $index">
+            <span ng-repeat="item in lines">
                 {{ item.date | date : 'dd/MM/yyyy' }} - {{ item.sum }} <br><hr>
             </span>
             <p id='itog'>
