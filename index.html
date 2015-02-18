@@ -19,11 +19,12 @@
             <h3>Тарифные планы</h3>
             <input type="radio" class="vlt" value="6" ng-model="mes" ng-change="trp12r = ''"> 6 месяцев<Br>
             <input type="radio" class="vlt" value="12" ng-model="mes"> 12 месяцев<Br>
-            <div class="rad2r">
-                <input type="radio" class="vlt" value="tp12r1" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12r"> Развитие 1<Br>
-                <input type="radio" class="vlt" value="tp12r2" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12r"> Развитие 2<Br>
-                <input type="radio" class="vlt" value="tp12r3" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12r"> Развитие 3<Br>
-            </div>
+            <input type="checkbox" class="vlt" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12rchk" ng-change="trp12r = ''"> ТП Развитие
+            <p class="rad2r">
+                <input type="radio" class="vlt" value="tp12r1" ng-disabled="!trp12rchk" ng-model="trp12r"> Развитие 1<Br>
+                <input type="radio" class="vlt" value="tp12r2" ng-disabled="!trp12rchk" ng-model="trp12r"> Развитие 2<Br>
+                <input type="radio" class="vlt" value="tp12r3" ng-disabled="!trp12rchk" ng-model="trp12r"> Развитие 3<Br>
+            </p>
         </div>
         <div class="rad3">
             <h3>Введите сумму</h3>
