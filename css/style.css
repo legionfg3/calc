@@ -67,6 +67,9 @@ text-shadow: 1px 1px 1px #fff;
 .rad5_grey{
     color: #A4A4A4;
 }
+.rad5_small{
+    font-size: 12px;
+}
 .vlt{
 margin-left:50px;
 float:left;
