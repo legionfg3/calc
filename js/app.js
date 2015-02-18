@@ -51,7 +51,7 @@ angular
         vm.data = data;
 
         vm.calc = function() {
-            if (+vm.vzns < vm.data[vm.trp12r || vm.valut].min) { return; }
+            if (!vm.vzns || (+vm.vzns < vm.data[vm.trp12r || vm.valut].min) || (+vm.vzns > vm.data[vm.trp12r || vm.valut].max)) { return; }
             var max = !vm.trp12r && (vm.vzns > data[vm.valut].max);
             var date = new Date();
             var day = date.getDate();
@@ -59,7 +59,7 @@ angular
             var year = date.getFullYear();
             var vmes = vm.trp12r? data[vm.trp12r].trpl: data[vm.valut].trpl[vm.mes];
             var first = (max? 0.05 : vmes) * vm.vzns;
-            var last = (vm.trp12r? (1.07 + vmes): (1 + vmes) * 0.9) * vm.vzns;
+            var last = (vm.trp12r? (1.07 + vmes): (1 + vmes)) * vm.vzns;
             var sum = null;
 
             vm.itogd = null;
@@ -72,7 +72,7 @@ angular
                 if (vm.trp12r && (i === 11)) { sum += 2 * vmes * vm.vzns; }
                 vm.lines.push({
                     date: new Date(year, month + i, day),
-                    sum: sum,
+                    sum: Math.floor(sum),
                     rem: vm.trp12r? [2,5,8,11].indexOf(i) + 1? '(к выплате)': '(к зачислению)': ''
                 });
             }

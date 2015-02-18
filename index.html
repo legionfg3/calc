@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css"  />
 </head>
 <body ng-app="app">
-<div align="center" ng-controller="MainCtrl" ng-cloak>
+<div align="center" ng-controller="MainCtrl">
     <div class="wrap">
         <div class="logo"></div>
         <div class="logo2"> Калькулятор дохода</div>
@@ -29,7 +29,8 @@
             <h3>Введите сумму</h3>
             <input type="text" class="suma" ng-model="vzns">
             <span class='minsm' ng-if="+vzns < data[trp12r || valut].min"><strong> Минимальный взнос от {{ data[trp12r || valut].min }} {{ valut }}</strong></span><Br>
-            <span class='minsm2' ng-if="!vzns || +vzns >= data[trp12r || valut].min">*если сумма вклада больше 5000000 RUB, 150000 USD, 100000 EUR то особые условия.</span>
+            <span class='minsm' ng-if="+vzns > data[trp12r || valut].max"><strong> Максимальный взнос до {{ data[trp12r || valut].max }} {{ valut }}</strong></span><Br>
+            <span class='minsm2'>*если сумма вклада больше 5000000 RUB, 150000 USD, 100000 EUR то особые условия.</span>
         </div>
         <div class="rzc" ng-click="calc()"></div>
         <div class="rad5" ng-if="lines.length">
@@ -47,4 +48,5 @@
 </body>
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
+<script>new Image().src = 'img/1bh.png';</script>
 </html>
