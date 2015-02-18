@@ -66,19 +66,19 @@ angular
             vm.lines = [];
 
             for (var i = 0; i < vm.mes; i++) {
-                sum = Math.floor(i? vm.mes - i > 1? vmes * vm.vzns: last : first);
+                sum = Math.round(i? vm.mes - i > 1? vmes * vm.vzns: last : first);
                 vm.itogd += sum;
                 if (vm.trp12r && ([2,5,8].indexOf(i) + 1)) { sum *= 3; }
                 if (vm.trp12r && (i === 11)) { sum += 2 * vmes * vm.vzns; }
                 vm.lines.push({
                     date: new Date(year, month + i, day),
-                    sum: Math.floor(sum),
+                    sum: Math.round(sum),
                     rem: vm.trp12r? [2,5,8,11].indexOf(i) + 1? '(к выплате)': '(к зачислению)': ''
                 });
             }
 
             vm.itogd -= vm.vzns;
-            vm.itogp = Math.floor((vm.itogd / vm.vzns) * 1000) / 10;
+            vm.itogp = Math.round((vm.itogd / vm.vzns) * 1000) / 10;
             vm.valutp = vm.valut;
             vm.mesp = vm.mes;
         }
