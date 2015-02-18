@@ -62,7 +62,6 @@ angular
             var last = (vm.trp12r? (1.07 + vmes): (1 + vmes) * 0.9) * vm.vzns;
             var sum = null;
 
-            vm.needMin = false;
             vm.itogd = null;
             vm.lines = [];
 
