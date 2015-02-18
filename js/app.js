@@ -4,7 +4,8 @@
 
 angular
     .module('app', [])
-    .controller('Main', function ($scope) {
+    .controller('MainCtrl', function ($scope) {
+        var vm = $scope;
         var data = {
             RUB: {
                 min: 35000,
@@ -46,34 +47,39 @@ angular
                 trpl: 0.20
             }
         };
-        $scope.data = data;
-        $scope.calc = function() {
-            var max = !$scope.trp12r && ($scope.vzns > data[$scope.valut].max);
+
+        vm.data = data;
+
+        vm.calc = function() {
+            if (+vm.vzns < vm.data[vm.trp12r || vm.valut].min) { return; }
+            var max = !vm.trp12r && (vm.vzns > data[vm.valut].max);
             var date = new Date();
             var day = date.getDate();
             var month = date.getMonth();
             var year = date.getFullYear();
-            var vmes = $scope.trp12r? data[$scope.trp12r].trpl: data[$scope.valut].trpl[$scope.mes];
-            var first = (max? 0.05 : vmes) * $scope.vzns;
-            var last = (1 + vmes) * $scope.vzns * ($scope.trp12r? 1.07: 0.9);
+            var vmes = vm.trp12r? data[vm.trp12r].trpl: data[vm.valut].trpl[vm.mes];
+            var first = (max? 0.05 : vmes) * vm.vzns;
+            var last = (vm.trp12r? (1.07 + vmes): (1 + vmes) * 0.9) * vm.vzns;
             var sum = null;
 
-            $scope.needMin = false;
-            $scope.itogd = null;
-            $scope.lines = [];
+            vm.needMin = false;
+            vm.itogd = null;
+            vm.lines = [];
 
-            for (var i = 0; i < $scope.mes; i++) {
-                sum = Math.floor(i? $scope.mes - i > 1? vmes * $scope.vzns: last : first);
-                $scope.itogd += sum;
-                $scope.lines.push({
+            for (var i = 0; i < vm.mes; i++) {
+                sum = Math.floor(i? vm.mes - i > 1? vmes * vm.vzns: last : first);
+                vm.itogd += sum;
+                vm.lines.push({
                     date: new Date(year, month + i, day),
-                    sum: sum
+                    sum: sum,
+                    rem: vm.trp12r? [2,5,8,11].indexOf(i) + 1? '(к выплате)': '(к зачислению)': ''
                 });
             }
 
-            $scope.itogp = Math.floor((($scope.itogd / $scope.vzns) - 1) * 1000) / 10;
-            $scope.valutp = $scope.valut;
-            $scope.mesp = $scope.mes;
+            vm.itogd -= vm.vzns;
+            vm.itogp = Math.floor((vm.itogd / vm.vzns) * 1000) / 10;
+            vm.valutp = vm.valut;
+            vm.mesp = vm.mes;
         }
     });
 }());

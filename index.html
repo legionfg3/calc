@@ -5,39 +5,39 @@
 <link rel="stylesheet" type="text/css" href="css/style.css"  />
 </head>
 <body ng-app="app">
-<div align="center" ng-controller="Main">
-    <div id="wrap">
-        <div id="logo"></div>
-        <div id="logo2"> Калькулятор дохода</div>
-        <div id="rad1" ng-init="valut = 'RUB'">
+<div align="center" ng-controller="MainCtrl">
+    <div class="wrap">
+        <div class="logo"></div>
+        <div class="logo2"> Калькулятор дохода</div>
+        <div class="rad1" ng-init="valut = 'RUB'">
             <h3>Валюта вклада</h3>
             <input type="radio" class="vlt" value="RUB" ng-model="valut"> Рубли<Br>
             <input type="radio" class="vlt" value="USD" ng-model="valut" ng-change="trp12r = ''"> Долары<Br>
             <input type="radio" class="vlt" value="EUR" ng-model="valut" ng-change="trp12r = ''"> Евро<Br>
         </div>
-        <div id="rad2" ng-init="mes = 6">
+        <div class="rad2" ng-init="mes = 6">
             <h3>Тарифные планы</h3>
             <input type="radio" class="vlt" value="6" ng-model="mes" ng-change="trp12r = ''"> 6 месяцев<Br>
             <input type="radio" class="vlt" value="12" ng-model="mes"> 12 месяцев<Br>
-            <div id="rad2r">
+            <div class="rad2r">
                 <input type="radio" class="vlt" value="tp12r1" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12r"> Развитие 1<Br>
                 <input type="radio" class="vlt" value="tp12r2" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12r"> Развитие 2<Br>
                 <input type="radio" class="vlt" value="tp12r3" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12r"> Развитие 3<Br>
             </div>
         </div>
-        <div id="rad3">
+        <div class="rad3">
             <h3>Введите сумму</h3>
-            <input type="text" id="suma" name="sum" ng-model="vzns">
-            <span id='minsm' ng-if="+vzns < data[trp12r || valut].min"><strong> Минимальный взнос от {{ data[trp12r || valut].min }} {{ valut }}</strong></span><Br>
-            <span id='minsm2' ng-if="+vzns >= data[trp12r || valut].min">*если сумма вклада больше 5000000 р , 150000 USD, 100000 EURO то особые условия.</span>
+            <input type="text" class="suma" ng-model="vzns">
+            <span class='minsm' ng-if="+vzns < data[trp12r || valut].min"><strong> Минимальный взнос от {{ data[trp12r || valut].min }} {{ valut }}</strong></span><Br>
+            <span class='minsm2' ng-if="+vzns >= data[trp12r || valut].min">*если сумма вклада больше 5000000 RUB, 150000 USD, 100000 EUR то особые условия.</span>
         </div>
-        <div id="rzc" ng-click="calc()"></div>
-        <div id="rad5" ng-if="lines.length">
+        <div class="rzc" ng-click="calc()"></div>
+        <div class="rad5" ng-if="lines.length">
             <p><b>График выплат:</b></p>
-            <span ng-repeat="item in lines track by $index">
-                {{ item.date | date : 'dd/MM/yyyy' }} - {{ item.sum }} {{ valutp }} <br><hr>
+            <span ng-class="{rad5_grey: item.rem === '(к зачислению)'}" ng-repeat="item in lines track by $index">
+                {{ item.date | date : 'dd/MM/yyyy' }} - {{ item.sum }} {{ valutp }} {{ item.rem }}<br><hr>
             </span>
-            <p id='itog'>
+            <p class='itog'>
                 Итого, доход по выбранному ТП составляет : <br>{{ itogd }} {{ valutp }}, что составляет {{ itogp }}% за {{ mesp }} месяцев
             </p>
         </div>
