@@ -69,6 +69,7 @@ angular
                 sum = Math.floor(i? vm.mes - i > 1? vmes * vm.vzns: last : first);
                 vm.itogd += sum;
                 if (vm.trp12r && ([2,5,8].indexOf(i) + 1)) { sum *= 3; }
+                if (vm.trp12r && (i === 11)) { sum += 2 * vmes * vm.vzns; }
                 vm.lines.push({
                     date: new Date(year, month + i, day),
                     sum: sum,
