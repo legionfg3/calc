@@ -20,6 +20,7 @@ background:url(../img/alogo2.png) no-repeat;
 float:left;
 width:500px;
 height:100px;
+margin-left: 100px;
 line-height: 100px;
 font-family: Verdana;
 font-size: 24px;
@@ -38,7 +39,7 @@ float:left;
 }
 .rad3{
 margin-top:50px;
-margin-left: -40px;
+margin-left:60px;
 width:900px;
 float:left;
 }
@@ -46,7 +47,7 @@ float:left;
 margin-top:40px;
 width:180px;
 height:40px;
-margin-left:325px;
+margin-left:420px;
 float:left;
 background:url(../img/1b.png);
 }
