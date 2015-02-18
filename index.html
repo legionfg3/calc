@@ -8,18 +8,18 @@
 <div align="center" ng-controller="MainCtrl">
     <div class="wrap">
         <div class="logo"></div>
-        <div class="logo2"> Калькулятор дохода</div>
+        <div class="logo2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Калькулятор дохода</div>
         <div class="rad1" ng-init="valut = 'RUB'">
             <h3>Валюта вклада</h3>
             <input type="radio" class="vlt" value="RUB" ng-model="valut"> Рубли<Br>
-            <input type="radio" class="vlt" value="USD" ng-model="valut" ng-change="trp12r = ''"> Долары<Br>
-            <input type="radio" class="vlt" value="EUR" ng-model="valut" ng-change="trp12r = ''"> Евро<Br>
+            <input type="radio" class="vlt" value="USD" ng-model="valut" ng-change="trp12r = ''; trp12rchk = false"> Долары<Br>
+            <input type="radio" class="vlt" value="EUR" ng-model="valut" ng-change="trp12r = ''; trp12rchk = false"> Евро<Br>
         </div>
         <div class="rad2" ng-init="mes = 6">
             <h3>Тарифные планы</h3>
-            <input type="radio" class="vlt" value="6" ng-model="mes" ng-change="trp12r = ''"> 6 месяцев<Br>
+            <input type="radio" class="vlt" value="6" ng-model="mes" ng-change="trp12r = ''; trp12rchk = false"> 6 месяцев<Br>
             <input type="radio" class="vlt" value="12" ng-model="mes"> 12 месяцев<Br>
-            <input type="checkbox" class="vlt" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12rchk" ng-change="trp12r = ''"> ТП Развитие
+            <input type="checkbox" class="vlt" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12rchk" ng-change="trp12r = trp12rchk? 'tp12r1': ''"> ТП Развитие
             <p class="rad2r">
                 <input type="radio" class="vlt" value="tp12r1" ng-disabled="!trp12rchk" ng-model="trp12r"> Развитие 1<Br>
                 <input type="radio" class="vlt" value="tp12r2" ng-disabled="!trp12rchk" ng-model="trp12r"> Развитие 2<Br>

@@ -38,6 +38,7 @@ float:left;
 }
 .rad3{
 margin-top:50px;
+margin-left: -40px;
 width:900px;
 float:left;
 }
@@ -45,7 +46,7 @@ float:left;
 margin-top:40px;
 width:180px;
 height:40px;
-margin-left:360px;
+margin-left:325px;
 float:left;
 background:url(../img/1b.png);
 }
@@ -71,7 +72,7 @@ text-shadow: 1px 1px 1px #fff;
     font-size: 12px;
 }
 .vlt{
-margin-left:50px;
+margin-left:30px;
 float:left;
 }
 .suma{
