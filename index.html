@@ -29,7 +29,7 @@
             <h3>Введите сумму</h3>
             <input type="text" class="suma" ng-model="vzns">
             <span class='minsm' ng-if="+vzns < data[trp12r || valut].min"><strong> Минимальный взнос от {{ data[trp12r || valut].min }} {{ valut }}</strong></span><Br>
-            <span class='minsm2' ng-if="+vzns >= data[trp12r || valut].min">*если сумма вклада больше 5000000 RUB, 150000 USD, 100000 EUR то особые условия.</span>
+            <span class='minsm2' ng-if="!vzns || +vzns >= data[trp12r || valut].min">*если сумма вклада больше 5000000 RUB, 150000 USD, 100000 EUR то особые условия.</span>
         </div>
         <div class="rzc" ng-click="calc()"></div>
         <div class="rad5" ng-if="lines.length">
