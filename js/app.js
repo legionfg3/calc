@@ -71,7 +71,7 @@ angular
                 if (vm.trp12r && ([2,5,8].indexOf(i) + 1)) { sum *= 3; }
                 if (vm.trp12r && (i === 11)) { sum += 2 * vmes * vm.vzns; }
                 vm.lines.push({
-                    date: new Date(year, month + i, day),
+                    date: new Date(year, month + i + 1, day),
                     sum: Math.round(sum),
                     rem: vm.trp12r? [2,5,8,11].indexOf(i) + 1? '(к выплате)': '(к зачислению)': ''
                 });
