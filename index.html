@@ -9,29 +9,78 @@
     <div class="wrap">
         <div class="logo"></div>
         <div class="logo2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Калькулятор дохода</div>
-        <div class="rad1" ng-init="valut = 'RUB'">
-            <h3>Валюта вклада</h3>
-            <input type="radio" class="vlt" value="RUB" ng-model="valut"> Рубли<Br>
-            <input type="radio" class="vlt" value="USD" ng-model="valut" ng-change="trp12r = ''; trp12rchk = false"> Долары<Br>
-            <input type="radio" class="vlt" value="EUR" ng-model="valut" ng-change="trp12r = ''; trp12rchk = false"> Евро<Br>
-        </div>
-        <div class="rad2" ng-init="mes = 6">
+        <div class="rad2" ng-init="trp = 1">
             <h3>Тарифные планы</h3>
-            <input type="radio" class="vlt" value="6" ng-model="mes" ng-change="trp12r = ''; trp12rchk = false"> 6 месяцев<Br>
-            <input type="radio" class="vlt" value="12" ng-model="mes"> 12 месяцев<Br>
-            <input type="checkbox" class="vlt" ng-disabled="valut !== 'RUB' || mes !== '12'" ng-model="trp12rchk" ng-change="trp12r = trp12rchk? 'tp12r1': ''"> ТП Развитие
-            <p class="rad2r">
-                <input type="radio" class="vlt" value="tp12r1" ng-disabled="!trp12rchk" ng-model="trp12r"> Развитие 1<Br>
-                <input type="radio" class="vlt" value="tp12r2" ng-disabled="!trp12rchk" ng-model="trp12r"> Развитие 2<Br>
-                <input type="radio" class="vlt" value="tp12r3" ng-disabled="!trp12rchk" ng-model="trp12r"> Развитие 3<Br>
-            </p>
+            <input type="radio" class="vlt" value="1" ng-model="trp"> «СТАРТОВЫЙ»<Br>
+            <input type="radio" class="vlt" value="2" ng-model="trp"> «СТАНДАРТ» 17%<Br>
+            <input type="radio" class="vlt" value="3" ng-model="trp"> «ВАЛЮТНЫЙ» 10%<Br>
+            <input type="radio" class="vlt" value="4" ng-model="trp"> «РАЗВИТИЕ 1» 18%<Br>
+            <input type="radio" class="vlt" value="5" ng-model="trp"> «РАЗВИТИЕ 2» 19%<Br>
+            <input type="radio" class="vlt" value="6" ng-model="trp"> «РАЗВИТИЕ 3» 20%<Br>
+        </div>
+        <div ng-if="trp === 1">
+            <ul>
+                <li>Сумма займа&nbsp; на 12 мес. 50 000 рублей</li>
+                <li>Выплата процентов</li>
+                <li>1-6 мес&nbsp; 17%</li>
+                <li>7-12 мес&nbsp; 10%</li>
+                <li>Итого: доходность 62%</li>
+            </ul>
+        </div>
+        <div ng-if="trp === 2">
+            <ul>
+                <li>Минимальная сумма займа на 12 мес. 100 000 рублей</li>
+                <li>Ежемесячная выплата&nbsp; 10%</li>
+                <li>Накопительная часть&nbsp; 7% в месяц</li>
+                <li>Итого доходность: 204%</li>
+                <li>Накопительная часть выплачивается&nbsp; в конце срока договора вместе с суммой займа.</li>
+            </ul>
+        </div>
+        <div ng-if="trp === 3">
+            <ul>
+                <li>Минимальная сумма займа на 12 мес.</li>
+                <li>1100 EURO (USD)</li>
+                <li>Ежемесячное начисление&nbsp; 10%</li>
+                <li>Выплата процентов ежемесячная</li>
+                <li>Итого доходность:&nbsp; 120%</li>
+            </ul>
+        </div>
+        <div ng-if="trp === 4">
+            <ul>
+                <li>Минимальная сумма займа на 12 мес. &nbsp;100 000 рублей</li>
+                <li>ежемесячное начисление&nbsp; 13%</li>
+                <li>накопительная часть &nbsp;5 % в месяц</li>
+                <li>Выплата процентов ежеквартально</li>
+                <li>По закрытию договора дополнительно&nbsp; 7 %</li>
+                <li>Итого доходность:&nbsp; 223%</li>
+                <li>Накопительная часть выплачивается&nbsp; в конце срока договора вместе с суммой займа.</li>
+            </ul>
+        </div>
+        <div ng-if="trp === 5">
+            <ul>
+                <li>Минимальная сумма займа на 12 мес. &nbsp;1000 000 рублей</li>
+                <li>ежемесячное начисление&nbsp; 14%</li>
+                <li>накопительная часть &nbsp;5 % в месяц</li>
+                <li>Выплата процентов ежеквартально</li>
+                <li>По закрытию договора дополнительно&nbsp; 7%</li>
+                <li>Итого доходность:&nbsp; 235%</li>
+                <li>Накопительная часть выплачивается&nbsp; в конце срока договора вместе с суммой займа.</li>
+            </ul>
+        </div>
+        <div ng-if="trp === 6">
+            <ul>
+                <li>Минимальная сумма займа на 12 мес. &nbsp;2000 000 рублей</li>
+                <li>ежемесячное начисление 15%</li>
+                <li>накопительная часть &nbsp;5 % в месяц</li>
+                <li>Выплата процентов ежеквартально</li>
+                <li>По закрытию договора дополнительно 7%</li>
+                <li>Итого доходность:&nbsp; 247%</li>
+                <li>Накопительная часть выплачивается&nbsp; в конце срока договора вместе с суммой займа.</li>
+            </ul>
         </div>
         <div class="rad3">
             <h3>Введите сумму</h3>
             <input type="text" class="suma" ng-model="vzns">
-            <span class='minsm' ng-if="+vzns < data[trp12r || valut].min"><strong> Минимальный взнос от {{ data[trp12r || valut].min }} {{ valut }}</strong></span><Br>
-            <span class='minsm' ng-if="+vzns > data[trp12r || valut].max"><strong> Максимальный взнос до {{ data[trp12r || valut].max }} {{ valut }}</strong></span><Br>
-            <span class='minsm2'>*если сумма вклада больше 5000000 RUB, 150000 USD, 100000 EUR то особые условия.</span>
         </div>
         <div class="rzc" ng-click="calc()"></div>
         <div class="rad5" ng-if="lines.length">
