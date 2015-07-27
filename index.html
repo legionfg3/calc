@@ -10,13 +10,15 @@
         <div class="logo"></div>
         <div class="logo2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Калькулятор дохода</div>
         <div class="rad1" ng-init="trp = 1">
-            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Тарифные планы</h3>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Тарифные планы</h3>
             <input type="radio" class="vlt" ng-value="1" ng-model="trp"> «СТАРТОВЫЙ»<Br>
             <input type="radio" class="vlt" ng-value="2" ng-model="trp"> «СТАНДАРТ» 17%<Br>
             <input type="radio" class="vlt" ng-value="3" ng-model="trp"> «ВАЛЮТНЫЙ» 10%<Br>
             <input type="radio" class="vlt" ng-value="4" ng-model="trp"> «РАЗВИТИЕ 1» 18%<Br>
             <input type="radio" class="vlt" ng-value="5" ng-model="trp"> «РАЗВИТИЕ 2» 19%<Br>
-            <input type="radio" class="vlt" ng-value="6" ng-model="trp"> «РАЗВИТИЕ 3» 20%<Br>
+            <input type="radio" class="vlt" ng-value="6" ng-model="trp"> «РАЗВИТИЕ 3» 20%<Br><Br>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Введите сумму</h3>
+            <input type="text" class="suma" ng-model="vznos" ng-change="calc()">
         </div>
         <div class="rad2">
             <div ng-if="trp === 1">
@@ -25,7 +27,7 @@
                     Выплата процентов<br>
                     1-6 мес 17%<br>
                     7-12 мес 10%<br>
-                    Итого: доходность 62%<br>
+                    <b>Итого доходность: 62%</b>
                 </span>
             </div>
             <div ng-if="trp === 2">
@@ -33,17 +35,16 @@
                     Минимальная сумма займа на 12 мес. 100 000 рублей<br>
                     Ежемесячная выплата 10%<br>
                     Накопительная часть 7% в месяц<br>
-                    Итого доходность: 204%<br>
-                    Накопительная часть выплачивается в конце срока договора вместе с суммой займа.<br>
+                    <b>Итого доходность: 204%</b><br>
+                    <i>Накопительная часть выплачивается в конце срока договора вместе с суммой займа.</i>
                 </span>
             </div>
             <div ng-if="trp === 3">
                 <span>
-                    Минимальная сумма займа на 12 мес.<br>
-                    1100 EURO (USD)<br>
+                    Минимальная сумма займа на 12 мес. 1100 EURO (USD)<br>
                     Ежемесячное начисление 10%<br>
                     Выплата процентов ежемесячная<br>
-                    Итого доходность: 120%<br>
+                    <b>Итого доходность: 120%</b>
                 </span>
             </div>
             <div ng-if="trp === 4">
@@ -52,46 +53,51 @@
                     Ежемесячное начисление 13%<br>
                     Накопительная часть 5 % в месяц<br>
                     Выплата процентов ежеквартально<br>
-                    По закрытию договора дополнительно 7 %<br>
-                    Итого доходность: 223%<br>
-                    Накопительная часть выплачивается в конце срока договора вместе с суммой займа.<br>
+                    По закрытию договора дополнительно 7%<br>
+                    <b>Итого доходность: 223%</b><br>
+                    <i>Накопительная часть выплачивается в конце срока договора вместе с суммой займа.</i>
                 </span>
             </div>
             <div ng-if="trp === 5">
                 <span>
-                    Минимальная сумма займа на 12 мес. 1000 000 рублей<br>
+                    Минимальная сумма займа на 12 мес. 1 000 000 рублей<br>
                     Ежемесячное начисление 14%<br>
                     Накопительная часть 5 % в месяц<br>
                     Выплата процентов ежеквартально<br>
                     По закрытию договора дополнительно 7%<br>
-                    Итого доходность:235%<br>
-                    Накопительная часть выплачивается в конце срока договора вместе с суммой займа.<br>
+                    <b>Итого доходность: 235%</b><br>
+                    <i>Накопительная часть выплачивается в конце срока договора вместе с суммой займа.</i>
                 </span>
             </div>
             <div ng-if="trp === 6">
                 <span>
-                    Минимальная сумма займа на 12 мес. 2000 000 рублей<br>
+                    Минимальная сумма займа на 12 мес. 2 000 000 рублей<br>
                     Ежемесячное начисление 15%<br>
                     Накопительная часть 5 % в месяц<br>
                     Выплата процентов ежеквартально<br>
                     По закрытию договора дополнительно 7%<br>
-                    Итого доходность: 247%<br>
-                    Накопительная часть выплачивается в конце срока договора вместе с суммой займа.<br>
+                    <b>Итого доходность: 247%</b><br>
+                    <i>Накопительная часть выплачивается в конце срока договора вместе с суммой займа.</i>
                 </span>
             </div>
         </div>
-        <div class="rad3">
-            <h3>Введите сумму</h3>
-            <input type="text" class="suma" ng-model="vzns">
-        </div>
-        <div class="rzc" ng-click="calc()"></div>
-        <div class="rad5" ng-if="lines.length">
-            <p><b>График выплат:</b></p>
-            <span ng-class="{rad5_grey: item.rem === '(к зачислению)'}" ng-repeat="item in lines track by $index">
-                {{ item.date | date : 'dd/MM/yyyy' }} - {{ item.sum }} {{ valutp }} {{ item.rem }}<br><hr>
+        <div ng-if="lines.length">
+            <span class="rad5">
+                <p><b>Основная часть:</b></p>
+                <span ng-class="{rad5_grey: item.rem === '(к зачислению)'}" ng-repeat="item in lines track by $index">
+                    {{ item.date | date : 'dd/MM/yyyy' }} - {{ item.sum }} {{ valutp }} {{ item.rem }}<br><hr>
+                </span>
+            </span>
+            <span class="rad5">
+                <p><b>Накопительная часть:</b></p>
+                <span ng-repeat="item in lines track by $index">
+                    <span class="rad5_grey" ng-if="!$last">{{ item.date | date : 'dd/MM/yyyy' }} - {{ nsum }} (к зачислению)</span>
+                    <span ng-if="$last">{{ item.date | date : 'dd/MM/yyyy' }} - {{ 12 * nsum }} (к выплате)</span>
+                    <br><hr>
+                </span>
             </span>
             <p class='itog'>
-                Итого, доход по выбранному ТП составляет : <br>{{ itogd }} {{ valutp }}, что составляет {{ itogp }}% за {{ mesp }} месяцев
+                Итого доход по выбранному ТП составляет: <br><b>{{ itog }}</b>, что составляет {{ itogp }}% за 12 месяцев
             </p>
             <span class="rad5_small" ng-if="trp12r">(+7% от тела инвест. займа - минимальная премия по итогам отработки программы.<br> <i>Может быть увеличена</i>)</span>
         </div>
