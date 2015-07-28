@@ -45,6 +45,7 @@ angular
                     rem: '(к выплате)'
                 }
             });
+            vm.lines[11].sum += +vm.vznos;
         }
 
         function start() {
