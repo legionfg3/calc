@@ -21,7 +21,7 @@
                 <input type="radio" class="vlt" ng-value="5" ng-model="trp" ng-change="calc()"> «РАЗВИТИЕ 2» 19%<Br>
                 <input type="radio" class="vlt" ng-value="6" ng-model="trp" ng-change="calc()"> «РАЗВИТИЕ 3» 20%<Br><Br>
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Введите сумму</h3>
-                <input type="text" class="suma" ng-model="vznos" ng-change="calc()">
+                <input type="number" class="suma" ng-model="vznos" ng-change="calc()" ng-disabled="trp === 1">
             </div>
             <div class="rad2">
                 <div ng-if="trp === 1">
@@ -30,7 +30,8 @@
                         Выплата процентов<br>
                         1-6 мес 17%<br>
                         7-12 мес 10%<br>
-                        <b>Итого доходность: 62%</b>
+                        <b>Итого доходность: 62%</b><br>
+                        <i>По стартовой программе можно заключить<br>не более 2-х договоров на одного человека.</i>
                     </span>
                 </div>
                 <div ng-if="trp === 2">

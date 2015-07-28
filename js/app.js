@@ -20,6 +20,7 @@ angular
         }
 
         function razvitie(num) {
+            vm.vznos = vm.vznos < 100000? 100000: vm.vznos || 100000;
             var sum = Math.round(num * vm.vznos / 100);
             vm.nsum = Math.round(5 * vm.vznos / 100);
             vm.itogp = 7 + 12 * (num + 5);
@@ -35,6 +36,7 @@ angular
         }
 
         function valut() {
+            vm.vznos = vm.vznos < 1100? 1100: vm.vznos || 1100;
             vm.usd = true;
             vm.itogp = 120;
             vm.itog = Math.round(vm.itogp * vm.vznos / 100);
@@ -61,6 +63,7 @@ angular
         }
 
         function standart() {
+            vm.vznos = vm.vznos < 100000? 100000: vm.vznos || 100000;
             vm.itogp = 204;
             vm.itog = Math.round(vm.itogp * vm.vznos / 100);
             vm.nsum = Math.round(7 * vm.vznos / 100);
@@ -75,14 +78,13 @@ angular
         }
 
         vm.calc = function() {
-            if (!vm.vznos && vm.trp > 1) { return; }
             vm.lines = [];
             vm.nsum = null;
             vm.usd = false;
             if (vm.trp === 1) { start(); }
-            if ((vm.trp === 2) && (vm.vznos > 99999)) { standart(); }
-            if ((vm.trp === 3) && (vm.vznos > 1099)) { valut(); }
-            if ((vm.trp > 3) && (vm.vznos > 99999)) {
+            if (vm.trp === 2) { standart(); }
+            if (vm.trp === 3) { valut(); }
+            if (vm.trp > 3) {
                 vm.trp = vm.vznos > 1999999? 6: vm.vznos > 999999? 5: 4;
                 razvitie(vm.trp + 9);
             }
