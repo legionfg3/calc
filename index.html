@@ -14,12 +14,12 @@
         <div class="main">
             <div class="rad1">
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Тарифные планы</h3>
-                <input type="radio" class="vlt" ng-value="1" ng-model="trp" ng-change="calc()"> «СТАРТОВЫЙ»<Br>
-                <input type="radio" class="vlt" ng-value="2" ng-model="trp" ng-change="calc()"> «СТАНДАРТ» 17%<Br>
-                <input type="radio" class="vlt" ng-value="3" ng-model="trp" ng-change="calc()"> «ВАЛЮТНЫЙ» 10%<Br>
-                <input type="radio" class="vlt" ng-value="4" ng-model="trp" ng-change="calc()"> «РАЗВИТИЕ 1» 18%<Br>
-                <input type="radio" class="vlt" ng-value="5" ng-model="trp" ng-change="calc()"> «РАЗВИТИЕ 2» 19%<Br>
-                <input type="radio" class="vlt" ng-value="6" ng-model="trp" ng-change="calc()"> «РАЗВИТИЕ 3» 20%<Br><Br>
+                <input type="radio" class="vlt" ng-value="1" ng-model="trp" ng-change="vznos = 50000; calc()"> «СТАРТОВЫЙ»<Br>
+                <input type="radio" class="vlt" ng-value="2" ng-model="trp" ng-change="vznos = 100000; calc()"> «СТАНДАРТ» 17%<Br>
+                <input type="radio" class="vlt" ng-value="3" ng-model="trp" ng-change="vznos = 1100; calc()"> «ВАЛЮТНЫЙ» 10%<Br>
+                <input type="radio" class="vlt" ng-value="4" ng-model="trp" ng-change="vznos = 100000; calc()"> «РАЗВИТИЕ 1» 18%<Br>
+                <input type="radio" class="vlt" ng-value="5" ng-model="trp" ng-change="vznos = 1000000; calc()"> «РАЗВИТИЕ 2» 19%<Br>
+                <input type="radio" class="vlt" ng-value="6" ng-model="trp" ng-change="vznos = 2000000; calc()"> «РАЗВИТИЕ 3» 20%<Br><Br>
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Введите сумму</h3>
                 <input type="number" class="suma" ng-model="vznos" ng-change="calc()" ng-disabled="trp === 1">
             </div>
