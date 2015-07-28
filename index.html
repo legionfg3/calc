@@ -12,14 +12,14 @@
             <div class="title">Калькулятор дохода</div>
         </div>
         <div class="main">
-            <div class="rad1" ng-init="trp = 1">
+            <div class="rad1">
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Тарифные планы</h3>
-                <input type="radio" class="vlt" ng-value="1" ng-model="trp"> «СТАРТОВЫЙ»<Br>
-                <input type="radio" class="vlt" ng-value="2" ng-model="trp"> «СТАНДАРТ» 17%<Br>
-                <input type="radio" class="vlt" ng-value="3" ng-model="trp"> «ВАЛЮТНЫЙ» 10%<Br>
-                <input type="radio" class="vlt" ng-value="4" ng-model="trp"> «РАЗВИТИЕ 1» 18%<Br>
-                <input type="radio" class="vlt" ng-value="5" ng-model="trp"> «РАЗВИТИЕ 2» 19%<Br>
-                <input type="radio" class="vlt" ng-value="6" ng-model="trp"> «РАЗВИТИЕ 3» 20%<Br><Br>
+                <input type="radio" class="vlt" ng-value="1" ng-model="trp" ng-change="calc()"> «СТАРТОВЫЙ»<Br>
+                <input type="radio" class="vlt" ng-value="2" ng-model="trp" ng-change="calc()"> «СТАНДАРТ» 17%<Br>
+                <input type="radio" class="vlt" ng-value="3" ng-model="trp" ng-change="calc()"> «ВАЛЮТНЫЙ» 10%<Br>
+                <input type="radio" class="vlt" ng-value="4" ng-model="trp" ng-change="calc()"> «РАЗВИТИЕ 1» 18%<Br>
+                <input type="radio" class="vlt" ng-value="5" ng-model="trp" ng-change="calc()"> «РАЗВИТИЕ 2» 19%<Br>
+                <input type="radio" class="vlt" ng-value="6" ng-model="trp" ng-change="calc()"> «РАЗВИТИЕ 3» 20%<Br><Br>
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Введите сумму</h3>
                 <input type="text" class="suma" ng-model="vznos" ng-change="calc()">
             </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div ng-if="trp === 3">
                     <span>
-                        Минимальная сумма займа на 12 мес. 1100 EURO (USD)<br>
+                        Минимальная сумма займа на 12 мес. 1100 USD/EUR<br>
                         Ежемесячное начисление 10%<br>
                         Выплата процентов ежемесячная<br>
                         <b>Итого доходность: 120%</b>
@@ -86,24 +86,25 @@
             </div>
         </div>
         <div class="rezult" ng-if="lines.length">
-            <span class="rad5">
-                <p><b>Основная часть:</b></p>
-                <span ng-class="{rad5_grey: item.rem === '(к зачислению)'}" ng-repeat="item in lines track by $index">
-                    {{ item.date | date : 'dd/MM/yyyy' }} - {{ item.sum }} {{ valutp }} {{ item.rem }}<br><hr>
+            <div class="table">
+                <span class="rad5" ng-class="{'rad5_one': !nsum}">
+                    <p><b>Основная часть:</b></p>
+                    <span ng-class="{rad5_grey: item.rem === '(к зачислению)'}" ng-repeat="item in lines track by $index">
+                        {{ item.date | date : 'dd/MM/yyyy' }} - {{ item.sum }} {{usd? 'USD/EUR': 'руб.'}} {{ item.rem }}<br><hr>
+                    </span>
                 </span>
-            </span>
-            <span class="rad5">
-                <p><b>Накопительная часть:</b></p>
-                <span ng-repeat="item in lines track by $index">
-                    <span class="rad5_grey" ng-if="!$last">{{ item.date | date : 'dd/MM/yyyy' }} - {{ nsum }} (к зачислению)</span>
-                    <span ng-if="$last">{{ item.date | date : 'dd/MM/yyyy' }} - {{ 12 * nsum }} (к выплате)</span>
-                    <br><hr>
+                <span class="rad5" ng-if="nsum">
+                    <p><b>Накопительная часть:</b></p>
+                    <span ng-repeat="item in lines track by $index">
+                        <span class="rad5_grey" ng-if="!$last">{{ item.date | date : 'dd/MM/yyyy' }} - {{ nsum }} {{usd? 'USD/EUR': 'руб.'}} (к зачислению)</span>
+                        <span ng-if="$last">{{ item.date | date : 'dd/MM/yyyy' }} - {{ 12 * nsum }} {{usd? 'USD/EUR': 'руб.'}} (к выплате)</span>
+                        <br><hr>
+                    </span>
                 </span>
-            </span>
+            </div>
             <p class='itog'>
-                Итого доход по выбранному ТП: <b>{{ itog }}</b>,<br> что составляет {{ itogp }}% за 12 месяцев
+                Итого доход по выбранному ТП: <b>{{ itog }} {{usd? 'USD/EUR': 'руб.'}}</b>,<br> что составляет {{ itogp }}% за 12 месяцев
             </p>
-            <span class="rad5_small" ng-if="trp12r">(+7% от тела инвест. займа - минимальная премия по итогам отработки программы.<br> <i>Может быть увеличена</i>)</span>
         </div>
     </div>
 </div>

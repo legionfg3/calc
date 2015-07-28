@@ -9,7 +9,7 @@ text-shadow: 1px 1px 1px #fff;
 }
 .wrap{
 width:900px;
-height:1280px;
+height:1100px;
 margin: 0 auto;
 }
 .header{
@@ -31,7 +31,7 @@ font-family: Verdana;
 font-size: 24px;
 }
 .main{
-height:350px;
+height:400px;
 }
 .rad1{
 width:200px;
@@ -64,10 +64,12 @@ cursor: pointer;
 background:url(../img/1bh.png);
 }
 .rezult{
-
+height:600px;
+}
+.table{
+height:550px;
 }
 .rad5{
-margin-top:40px;
 font-family: Arial,Helvetica,sans-serif;
 font-size: 18px;
 color: #000;
@@ -76,12 +78,16 @@ width:400px;
 margin-left:50px;
 float:left;
 text-shadow: 1px 1px 1px #fff;
+text-align:center;
+}
+.rad5_one{
+margin-left:250px;
 }
 .rad5_grey{
-    color: #A4A4A4;
+color: #A4A4A4;
 }
 .rad5_small{
-    font-size: 12px;
+font-size: 12px;
 }
 .vlt{
 margin-left:30px;
@@ -105,5 +111,5 @@ float:left;
 color:#f00;
 }
 .itog{
-margin-left:50px;
+text-align: center;
 }
